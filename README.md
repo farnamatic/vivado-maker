@@ -77,8 +77,7 @@ is considered to be fully automated through the "make" commands. The intention i
  
 ### Short description to TCLs
 
-Important note: Your vivado project, will not be pushed into the repository. Only the tcl files are considered to be pushed. So, remember before 
-pushing your updates on the block design (\*.bd) file, you "must" update the corresponding tcl file of it. 
+Important note: Your created vivado project is untracked and not is not pushed into the repository. Only the tcl files are considered to be pushed. So, remember before commiting your updates on the block design (\*.bd) file, you "must" update the corresponding tcl file of it. 
 
 
 Two tcl files named **run-vivado-prj** and **run-bd.tcl**, the **"src"** and its contents, as well as the **ip** folder are the only files and folders that are pushed into the repository. The **ip** contains all the custom IPs generated and used in the main vivado project. It is important to generate and build these IPs first, before creating and building the main vivado project. In these folders (i.e., **ips**) and the main vivado project folder (i.e., **board1-vivado**) will be many produced files and folders after the build, which are local and are not alowed to be pushed by a well organized **.gitignore** filter. 
