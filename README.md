@@ -10,8 +10,7 @@ is considered to be fully automated through the "make" commands. The intention i
 
 ## Feature 
 
-  - This vivado project targets the **Gluon** carrier boards designed by the Computer Architecture labratory (lab223) of UNISI (University of Siena). It deploy a **Trenz TE0808-04** (**xczu9eg-ffvc900-1-i-es1**) SoM (System on Module) board. The Gluon board is capable of being interconnected through the USB-C cables, which are connected to the high-speed gigabit transceivers of the 
-  FPGA. 
+  - This vivado project as an example targets the FPGA used on the **Trenz TE0808-04** (**xczu9eg-ffvc900-1-i-es1**) SoM (System on Module) board, which is deployed in the Gluon board. The Gluon board is a low power carrier board that is designed and built by the Computer Architecture Labratory (lab223) of UNISI (University of Siena).  
 
 ## Prerequisite 
   - The Vivado version for this repository is **2016.3**. 
