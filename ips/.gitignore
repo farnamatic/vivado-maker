@@ -1,0 +1,5 @@
+work-fpga
+*.log
+*.jou
+.Xil
+*.str

@@ -1,0 +1,6 @@
+!hls*/tcl
+!hls*/src
+!Makefile
+!common.mk
+!*.prj
+!include/*

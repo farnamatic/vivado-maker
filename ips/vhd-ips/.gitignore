@@ -1,0 +1,9 @@
+vhd*/*
+!vhd*/tcl
+!vhd*/src
+!Makefile
+!common.mk
+!*.prj
+*.xpr
+*.xml
+xgui/*
