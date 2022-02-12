@@ -3,6 +3,7 @@
 # DATE: 2021/10/21
 #########################################################
 all: hls
+
 hls: 
 	vivado_hls -f tcl/run-hls.tcl
 	@cp ../unisi.png ${PROJECT}/rtl/impl/ip/misc/logo.png
@@ -20,4 +21,4 @@ clean:
 	@rm -rf .Xil
 	@rm -rf solution1/.autopilot 
 	@rm -rf solution1/.debug
-//##########################################################
+##########################################################
