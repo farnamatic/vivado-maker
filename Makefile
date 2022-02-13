@@ -77,6 +77,17 @@ impl:
 	@echo Implementating the project
 	vivado -mode batch -source tcls/run-impl.tcl -nolog -nojournal
 
+
+
+hdf:
+	@echo Exporting HDF file ....
+	@test -s ${VIVADO_WORK_DIR}/${BOARD}-vivado.runs/impl_1/main_design_wrapper.sysdef || { echo "system definistion file does not exist! Exiting..."; false; } && \
+                 mkdir -p ${VIVADO_WORK_DIR}/${BOARD}-vivado.sdk && \
+                 cp ${VIVADO_WORK_DIR}/${BOARD}-vivado.runs/impl_1/main_design_wrapper.sysdef ${VIVADO_WORK_DIR}/${BOARD}-vivado.sdk/main_design_wrapper.hdf
+	@echo HDF file is created as ${VIVADO_WORK_DIR}/${BOARD}-vivado.sdk/main_design_wrapper.hdf
+
+
+
 ips:    
 	@echo Make IPs which are located into the folder "ips" 
 	@cd ips && make all 
