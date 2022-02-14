@@ -35,7 +35,9 @@ namespace eval ::FM {
 		           	put "Run OOC (Out of Context) IP for: $ip"
 		             if {[get_property generate_synth_checkpoint [get_files ${ip}.xci]] == 1 && [get_property is_enabled [get_files ${ip}.xci]] == 1} {
 		               create_ip_run [get_files -of_objects [get_fileset sources_1] $FM::VIVADO_PROJECT/$FM::BOARD_NAME-vivado.srcs/sources_1/bd/main_design/ip/${ip}/${ip}.xci]  
-		               launch_run -jobs 8 ${ip}_synth_1  
+		               # it is important to reset the synth_1 before launching the run.
+			       reset_run ${ip}_synth_1
+			       launch_run -jobs 8 ${ip}_synth_1  
 		               if {$i eq ($FM::OOC_MAX_JOBS-1)} {
 		               	wait_on_run  ${ip}_synth_1
 		               	set i 0	
