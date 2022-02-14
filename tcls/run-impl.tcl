@@ -36,8 +36,8 @@ write_verilog -force -mode timesim $FM::VIVADO_PROJECT/$FM::BOARD_NAME.timesim.v
 write_sdf     -force $FM::VIVADO_PROJECT/$FM::BOARD_NAME.timesim.sdf
 #
 # # reports
-exec mkdir -p reports/
-exec rm -rf reports/*
+file mkdir -force reports/
+file delete -force reports/*
 check_timing                                                              -file reports/$FM::BOARD_NAME.check_timing.rpt
 report_timing -max_paths 100 -nworst 100 -delay_type max -sort_by slack   -file reports/$FM::BOARD_NAME.timing_WORST_100.rpt
 report_timing -nworst 1 -delay_type max -sort_by group                    -file reports/$FM::BOARD_NAME.timing.rpt

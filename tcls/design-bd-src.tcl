@@ -169,11 +169,15 @@ CONFIG.POLARITY {ACTIVE_LOW} \
   # Create instance: your_ip_1_1, and set properties
   set your_ip_1_1 [ create_bd_cell -type ip -vlnv xilinx.com:user:your_ip_1:1.0 your_ip_1_1 ]
 
+  # Create instance: your_ip_1_2, and set properties
+  set your_ip_1_2 [ create_bd_cell -type ip -vlnv xilinx.com:user:your_ip_1:1.0 your_ip_1_2 ]
+
   # Create port connections
-  connect_bd_net -net Net [get_bd_ports clk_i] [get_bd_pins your_ip_1_0/ap_clk] [get_bd_pins your_ip_1_1/clk_i]
-  connect_bd_net -net Net1 [get_bd_ports rstn_i] [get_bd_pins your_ip_1_0/ap_rst_n] [get_bd_pins your_ip_1_1/rstn_i]
-  connect_bd_net -net d_i_1 [get_bd_ports d_i] [get_bd_pins your_ip_1_1/d_i]
+  connect_bd_net -net Net [get_bd_ports clk_i] [get_bd_pins your_ip_1_0/ap_clk] [get_bd_pins your_ip_1_1/clk_i] [get_bd_pins your_ip_1_2/clk_i]
+  connect_bd_net -net Net1 [get_bd_ports rstn_i] [get_bd_pins your_ip_1_0/ap_rst_n] [get_bd_pins your_ip_1_1/rstn_i] [get_bd_pins your_ip_1_2/rstn_i]
+  connect_bd_net -net d_i_1 [get_bd_ports d_i] [get_bd_pins your_ip_1_1/d_i] [get_bd_pins your_ip_1_2/d_i]
   connect_bd_net -net your_ip_1_1_d_o [get_bd_ports d_o] [get_bd_pins your_ip_1_1/d_o]
+  connect_bd_net -net your_ip_1_2_d_o [get_bd_pins your_ip_1_0/input1_TSTRB] [get_bd_pins your_ip_1_2/d_o]
 
   # Create address segments
 

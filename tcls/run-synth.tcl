@@ -13,15 +13,20 @@ if { $list_projs eq "" } {
     open_project $FM::VIVADO_PROJECT/$FM::BOARD_NAME-vivado.xpr
 }
 
+
 set_param general.maxThreads 8
 set_property target_language $FM::HDL [current_project]
 
 set_msg_config -id {[Synth 8-5858]} -new_severity "info"
 set_msg_config -id {[Synth 8-4480]} -limit 1000
- 
+
+
+FM::read_xci
+
+update_ip_catalog
 update_compile_order -fileset sources_1
 
-#synth_design -rtl -name rtl_1 -verbose 
+synth_design -rtl -name rtl_1 -verbose 
 
 set_property STEPS.SYNTH_DESIGN.ARGS.RETIMING true [get_runs synth_1]
 set_property strategy {Vivado Synthesis Defaults} [get_runs synth_1]
@@ -33,8 +38,8 @@ wait_on_run synth_1
 
 open_run synth_1
 
-exec mkdir -p reports/
-exec rm -rf reports/*
+file mkdir -force reports/
+file delete -force reports/*
 
 check_timing -verbose                                                   -file reports/$FM::BOARD_NAME.check_timing.rpt
 report_timing -max_paths 100 -nworst 100 -delay_type max -sort_by slack -file reports/$FM::BOARD_NAME.timing_WORST_100.rpt

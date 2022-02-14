@@ -46,7 +46,19 @@ namespace eval ::FM {
 		           }
 	         }
 	    }
-	}    
+	}
+
+	proc read_xci {} {
+                if {[file exists $FM::VIVADO_PROJECT/$FM::BOARD_NAME-vivado.srcs/sources_1/bd/main_design/ip]} {
+                        update_compile_order -fileset sources_1
+                        catch {set ip_names [get_ips]}
+                        foreach ip $ip_names {
+                                put ${ip}
+                                read_ip $FM::VIVADO_PROJECT/$FM::BOARD_NAME-vivado.srcs/sources_1/bd/main_design/ip/${ip}/${ip}.xci
+                        }
+                }
+        }
+	
 
 }
 
