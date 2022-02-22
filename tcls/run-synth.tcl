@@ -26,7 +26,7 @@ FM::read_xci
 update_ip_catalog
 update_compile_order -fileset sources_1
 
-$synth_design -rtl -name rtl_1 -verbose 
+#synth_design -rtl -name rtl_1 -verbose 
 
 set_property STEPS.SYNTH_DESIGN.ARGS.RETIMING true [get_runs synth_1]
 set_property strategy {Vivado Synthesis Defaults} [get_runs synth_1]
