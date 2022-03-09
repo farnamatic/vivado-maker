@@ -8,6 +8,7 @@ The Vivado project creation, Out of Contex (OOC) IP output products generation, 
 is considered to be fully automated through the "make" commands. The intention is the user keeps working with the terminal through the "make" commands, and only whenever a block design updates invoked, the GUI can be opened. Then, when the block design is updated, with a particular command ("i.e., make update_tcl"), the dedicated tcl file as the tcl file of the main design is going to be regenerated, and ready to be git pushed into the repository.
 
 
+
 ## Feature 
 
   - This vivado project as an example targets the FPGA used on the **Trenz TE0808-04** (**xczu9eg-ffvc900-1-i-es1**) SoM (System on Module) board, which is deployed in the Gluon board. The Gluon board is a low power carrier board that is designed and built by the Computer Architecture Labratory (lab223) of UNISI (University of Siena).  
