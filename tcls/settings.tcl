@@ -60,7 +60,25 @@ namespace eval ::FM {
                         }
                 }
         }
-	
+
+
+
+	proc read_user_lib_1 {} {
+        	
+        	if {[file exists srcs/libs/user_lib_1]} {
+
+        		set vhd_files [glob srcs/libs/user_lib_1/*.vhd]
+        		put $vhd_files
+        		catch {$vhd_files}
+        		foreach vhd $vhd_files {
+        	             add_files -norecurse ${vhd}
+        	             set_property library user_lib_1 [get_files ${vhd}]
+        		}
+        	 	update_compile_order -fileset sources_1
+        	}
+
+        }
+
 
 }
 

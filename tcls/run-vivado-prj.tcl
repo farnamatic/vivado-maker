@@ -45,6 +45,12 @@ update_ip_catalog
 source tcls/design-bd-src.tcl
 
 
+#if your project has HDL libraries please add here with the specific tcl proc that we defined: 
+#example:
+#FM::read_user_lib_1
+#FM::read_user_lib_2
+
+
 #if there are source files
 #please add your *.vhd *.sv, *.v sources 
 #here. 
