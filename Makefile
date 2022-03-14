@@ -88,11 +88,13 @@ hdf:
 
 
 
-ips:    
+custom-ips:    
 	@echo Make IPs which are located into the folder "ips" 
 	@cd ips && make all 
 
 clean:
 	@echo Clean ...
-	rm -rf *.log *.jou .Xil  
+	rm -rf *.log *.jou .Xil 
+	@cd ips && make clean
+       	
 ########################################################################################################
