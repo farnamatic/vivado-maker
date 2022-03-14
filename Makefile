@@ -46,9 +46,9 @@ export VIVADO_WORK_DIR
 export HDL_LANGUAGE
 export OOC_JOBS
 
-all: vivado
+all: impl
  
-vivado:  
+vivado: custom_ips 
 	@echo Creating Vivado Project 
 	@mkdir -p ${VIVADO_WORK_DIR}
 	@cd ${VIVADO_WORK_DIR} 
@@ -63,17 +63,17 @@ update_tcl:
 	cp ${VIVADO_WORK_DIR}/${BOARD}-vivado.srcs/sources_1/bd/main_design/ui/* srcs/stored_ui/
 	vivado -mode batch -source tcls/gen-bd-tcl.tcl  -nolog -nojournal
 
-ip_ooc:
+ip_ooc: vivado
 	@echo Synthesizing the project
 	@cd ${VIVADO_WORK_DIR}
 	vivado -mode batch -source tcls/run-ooc.tcl -nolog -nojournal 
 	wait; 
 
-synth:
+synth: ip_ooc
 	@echo Synthesizing the project
 	vivado -mode batch -source tcls/run-synth.tcl -nolog -nojournal 
 
-impl:
+impl: synth
 	@echo Implementating the project
 	vivado -mode batch -source tcls/run-impl.tcl -nolog -nojournal
 
@@ -87,8 +87,7 @@ hdf:
 	@echo HDF file is created as ${VIVADO_WORK_DIR}/${BOARD}-vivado.sdk/main_design_wrapper.hdf
 
 
-
-custom-ips:    
+custom_ips:
 	@echo Make IPs which are located into the folder "ips" 
 	@cd ips && make all 
 
