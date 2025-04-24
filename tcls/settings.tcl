@@ -9,14 +9,14 @@ namespace eval ::FM {
 	variable VIVADO_PROJECT
 	variable PART_NAME
 	variable BOARD_NAME
-	variable HDL
+	variable HDL_LANGUAGE
 	variable OOC_MAX_JOBS
 
 	proc print_gvars {} {
       		put $FM::VIVADO_PROJECT
       		put $FM::PART_NAME
       		put $FM::BOARD_NAME
-      		put $FM::HDL
+      		put $FM::HDL_LANGUAGE
       		put $FM::OOC_MAX_JOBS
 	}
 
@@ -85,7 +85,7 @@ namespace eval ::FM {
 set FM::VIVADO_PROJECT $::env(VIVADO_WORK_DIR)
 set FM::PART_NAME $::env(XILINX_PART)
 set FM::BOARD_NAME $::env(BOARD)
-set FM::HDL $::env(HDL_LANGUAGE) 
+set FM::HDL_LANGUAGE $::env(HDL_LANGUAGE) 
 set FM::OOC_MAX_JOBS $::env(OOC_JOBS) 
 
 

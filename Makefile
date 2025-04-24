@@ -7,10 +7,10 @@
 # implementation, bitstream generation, report generation, for target board defined
 # by the user through the $BOARD.
 # The following environment variable can be set by the user:
-BOARD          ?= board1
+BOARD          ?= au55c
 #BOARD          ?= board2
 #BOARD          ?= board3
-VIVADO_VERSION  ?=2016.3
+export VIVADO_VERSION  ?=2023.2
 # VIVADO_VERSION  ?=2020.2
 HDL_LANGUAGE    ?= VHDL
 OOC_JOBS        ?= 16
@@ -21,10 +21,11 @@ ifeq ($(BOARD), board1)
 else ifeq ($(BOARD), board2)
 	XILINX_PART              := xczu9eg-ffvc900-1-e-es2
 	CLK_PERIOD_NS            := 20
-else ifeq  ($(BOARD), board3)
-	XILINX_PART              := xc7k325tffg900-2
-	XILINX_BOARD             := digilentinc.com:genesys2:part0:1.1
+else ifeq  ($(BOARD), au55c)
+	XILINX_PART              := xcu55c-fsvh2892-2L-e
+	XILINX_BOARD             := xilinx.com:au55c:part0:1.0
 	CLK_PERIOD_NS            := 20
+
 else
 $(error Unknown board - please specify a supported FPGA board)
 endif
@@ -34,6 +35,9 @@ endif
 ######################################################################################################
 # Do not touch from here:
 ######################################################################################################
+MKFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
+export ROOT_PATH   := $(dir $(MKFILE_PATH))
+
 HLS_IP_DIR := hls-ips
 VHD_IP_DIR := vhd-ips
 VIVADO_WORK_DIR := vivado-prj

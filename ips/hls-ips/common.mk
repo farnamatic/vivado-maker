@@ -5,7 +5,7 @@
 all: hls
 
 hls: 
-	vivado_hls -f tcl/run-hls.tcl
+	vitis-run --mode hls --tcl tcl/run-hls.tcl
 	@cp ../unisi.png ${PROJECT}/rtl/impl/ip/misc/logo.png
 
 clean:

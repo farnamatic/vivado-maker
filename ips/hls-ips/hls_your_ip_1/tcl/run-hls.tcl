@@ -8,8 +8,8 @@ set vivado_version $::env(VIVADO_VERSION)
 set partNumber $::env(XILINX_PART)
 set ip_name "$::env(PROJECT)"
 set module_name "$::env(MODULE)"
-set clk_period $::env(HLS_CLK_PERIOD)
-set hdl $::env(HDL)
+set clk_period $::env(CLK_PERIOD_NS)
+set hdl $::env(HDL_LANGUAGE)
 
 
 open_project  $ip_name

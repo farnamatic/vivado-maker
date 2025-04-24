@@ -14,7 +14,7 @@ if { $list_projs eq "" } {
 }
 
 set_param general.maxThreads 8
-set_property target_language $FM::HDL [current_project]
+set_property target_language $FM::HDL_LANGUAGE [current_project]
 
 
 reset_run impl_1

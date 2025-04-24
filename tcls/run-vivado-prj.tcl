@@ -12,7 +12,7 @@ source tcls/settings.tcl
 set project $FM::BOARD_NAME-vivado 
 create_project $project $FM::VIVADO_PROJECT/ -force -part $FM::PART_NAME
 set_param general.maxThreads 8
-set_property target_language $FM::HDL [current_project]
+set_property target_language $FM::HDL_LANGUAGE [current_project]
 
 set_msg_config -id {[Synth 8-5858]} -new_severity "info"
 set_msg_config -id {[Synth 8-4480]} -limit 1000
@@ -29,6 +29,8 @@ if {$FM::BOARD_NAME == "board1"} {
       add_files -fileset constrs_1 -norecurse constraints/board1_constraints.xdc
 } elseif {$FM::BOARD_NAME == "board2"} {
       add_files -fileset constrs_1 -norecurse constraints/board2_constraints.xdc
+} elseif {$FM::BOARD_NAME == "au55c"} {
+      add_files -fileset constrs_1 -norecurse constraints/U55C_xdc_1v00.xdc
 } else {
 	exit 1
 }      	        
@@ -45,7 +47,7 @@ update_ip_catalog
 source tcls/design-bd-src.tcl
 
 
-#if your project has HDL libraries please add here with the specific tcl proc that we defined: 
+#if your project has HDL_LANGUAGE libraries please add here with the specific tcl proc that we defined: 
 #example:
 #FM::read_user_lib_1
 #FM::read_user_lib_2

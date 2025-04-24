@@ -15,7 +15,7 @@ if { $list_projs eq "" } {
 
 
 set_param general.maxThreads 8
-set_property target_language $FM::HDL [current_project]
+set_property target_language $FM::HDL_LANGUAGE [current_project]
 
 set_msg_config -id {[Synth 8-5858]} -new_severity "info"
 set_msg_config -id {[Synth 8-4480]} -limit 1000
